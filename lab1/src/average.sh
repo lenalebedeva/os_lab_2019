@@ -1,11 +1,13 @@
 #!/bin/bash
-count=0
-S=0
-while [ -n "$1" ]
+
+ARGS_SUM=0
+ARGS_ITER=0
+
+while [[ $# -gt 0 ]]
 do
-count=$[ $count + 1 ]
-S=$[ $S + $1 ]
-shift
+  ARGS_SUM=$((ARGS_SUM + $1))
+  ARGS_ITER=$((ARGS_ITER + 1))
+  shift
 done
-A=$[ $S / $count ]
-echo "Количество = $count; Среднее = $A"
+echo ${ARGS_ITER}
+echo "${ARGS_SUM}/${ARGS_ITER}"|bc -l
